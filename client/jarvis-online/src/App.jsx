@@ -29,7 +29,16 @@ import "./components/SearchResultsWidget.css"; // **** IMPORT NEW CSS ****
 // Constants
 const SERVER_URL = import.meta.env.VITE_BACKEND_HTTP_URL || "http://localhost:5000"; // Adjust if your server runs elsewhere
 
-const socket = io(SERVER_URL, { transports: ["websocket"] });
+const socket = io(SERVER_URL, {
+  transports: ["websocket"],   // avoid long-polling behind proxies
+  path: "/socket.io",
+  withCredentials: false
+});
+
+// Useful client-side logs
+socket.on("connect", () => console.log("connected", socket.id));
+socket.on("connect_error", (e) => console.error("connect_error", e.message, e));
+socket.on("disconnect", (r) => console.log("disconnected", r));
 
 function App() {
   console.log("--- App component rendered ---");
