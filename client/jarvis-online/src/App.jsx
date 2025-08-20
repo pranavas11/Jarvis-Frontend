@@ -27,7 +27,7 @@ import "./components/SearchResultsWidget.css"; // **** IMPORT NEW CSS ****
 // import './components/Visualizer.module.css'; // Already imported via AiVisualizer
 
 // Constants
-const SERVER_URL = import.meta.env.VITE_BACKEND_HTTP_URL || "http://localhost:5000"; // Adjust if your server runs elsewhere
+const SERVER_URL = import.meta.env.VITE_BACKEND_HTTP_URL || "https://jarvis-backend-ql7f.onrender.com"; // Adjust if your server runs elsewhere
 
 const socket = io(SERVER_URL, {
   transports: ["websocket"],   // avoid long-polling behind proxies
