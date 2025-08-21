@@ -119,6 +119,7 @@ function App() {
     }
     return true;
   }, []);
+  
   const resumeAudioContext = useCallback(async () => {
     if (audioContext.current && audioContext.current.state === "suspended") {
       try {
